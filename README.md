@@ -1,5 +1,17 @@
 By Andrew Holway - Otter Networks Founder - 2nd November 2018
 
+```
+#build stage
+FROM golang:alpine AS build-env
+ADD . /src
+RUN cd /src && go build -o myapp
+
+# iron/go is the alpine image with only ca-certificates added
+FROM alpine
+WORKDIR /app
+COPY --from=build-env /src/myapp /app/
+```
+
 ## How I learned to stop worrying and love Kubernetes
 ### Kubernetes automated and eliminated my job as a Devops Engineer. Here’s why that’s great news for development.
 
@@ -9,11 +21,11 @@ By Andrew Holway - Otter Networks Founder - 2nd November 2018
 
 I shifted nervously in my seat.
 
-“I wouldn’t recommend it. It’s complicated, and probably not possible without at least three full time engineers.”
+“I wouldn’t recommend it. It’s `complicated`, and probably not possible without at least three full time engineers.”
 
-My response to Philip Paetz, the newly minted CTO of Brickblock, was tinged with an audible sense of doubt. He had just told me he wanted Kubernetes, and I wasn’t ready to give him the enthusiastic agreement he was looking for.
+My response to Philip Paetz, the newly minted CTO of `Brickblock`, was tinged with an audible sense of doubt. He had just told me he wanted Kubernetes, and I wasn’t ready to give him the enthusiastic agreement he was looking for.
 
-Thinking back on this conversation now, I have to congratulate Paetz on his vision. He’d already deployed Kubernetes on AWS using the KOPS deployment system and needed someone to take it over. Even though I was very much a naysayer, he saw an opportunity to change my mind. He ultimately chose me to build this new company’s infrastructure.
+Thinking back on this conversation now, I have to congratulate Paetz on his `vision`. He’d already deployed Kubernetes on AWS using the KOPS deployment system and needed someone to take it over. Even though I was very much a naysayer, he saw an opportunity to `change` my mind. He ultimately chose me to build this new company’s infrastructure.
 
 ### Moving past the fear
 
